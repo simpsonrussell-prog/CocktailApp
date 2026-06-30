@@ -29,5 +29,9 @@ def decision():
     elif user_choice == "5":
         white_russian.make
     again = input("Would you like to make another cocktail? y/n\n> ")
+    if again == "y":
+        decision()
+    else:
+        print("Thanks for using my cocktails app!")
 
 decision()
