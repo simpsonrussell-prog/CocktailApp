@@ -24,6 +24,7 @@ vesper_martini = Cocktail("vesper martini", ["90ml gin", "30ml vodka", "15ml Lil
 mojito = Cocktail("mojito", ["Juice of 1 lime", "1tsp granulated sugar", "handful of mint leaves", "60ml white rum", "Soda water"], ["Muddle the lime juice, sugar and mint leaves in a small jug.", "Pour over the rum, stirring with a small handled spoon.", "Top up with soda water."])
 margarita = Cocktail("margarita", ["ice", "50ml tequila", "25 ml lime juicd", "20ml triple sec", "salt", "lime wedges"], ["Sprinkle a few teaspoons of salt over the surface of a small plate or saucer. Rub one wedge of lime along the rim of a tumbler and then dip it into the salt so that the entire rim is covered.", "Fill a cocktail shaker with ice, then add the tequila, lime juice and triple sec. Shake until the outside of the shaker feels cold.", "Strain the mix into the prepared glass over fresh ice. Add a wedge of lime."])
 white_russian = Cocktail("white russian", ["60ml vodka", "2 tbsp Kahlúa", "1 tbsp cream"], ["Mix together all the ingredients.", "Put some ice cubes in a small tumbler and pour the cocktail over the top."])
+ECHO = Cocktail("Echo", ["whisky", "rum", "vodka", "gin", "brandy", "cointreau"], ["Mix all of the ingredients together.", "Drink it overnight, while your parents are sleeping.", "Leave the bottles on the shelf. It's not like they'll notice!"])
 
 #logic for user to add their own recipe
 def add_drink():
@@ -33,13 +34,15 @@ def add_drink():
     while ingredient != "none":
         print(f"Your current list of ingredients contains {ingredients}.")
         ingredient = input("Please type another ingredient in here. If you have finished your list of ingredients, type none.\n> ")
-        ingredients.append(ingredient)
+        if ingredient != "none":
+            ingredients.append(ingredient)
     instruction = "breathe"
     instructions = []
     while instruction != "none":
         print(f"Your list of instructions is {instructions}.")
         instruction = input("Please type your next instruction here. If you have no further instructions, type 'none'.\n> ")
-        instructions.append(instruction)
+        if instruction != "none":
+            instructions.append(instruction)
     name = Cocktail(name, ingredients, instructions)
 
 
