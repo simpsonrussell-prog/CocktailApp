@@ -1,8 +1,11 @@
+cocktail_list = []
+
 class Cocktail():
     def __init__(self, name, ingredients = [], instructions = []):
         self.name = name
         self.ingredients = ingredients
         self.instructions = instructions
+        cocktail_list.append(self)
     def __repr__(self):
         return f"{self.name}"
     def make(self):
@@ -16,22 +19,46 @@ mojito = Cocktail("mojito", ["Juice of 1 lime", "1tsp granulated sugar", "handfu
 margarita = Cocktail("margarita", ["ice", "50ml tequila", "25 ml lime juicd", "20ml triple sec", "salt", "lime wedges"], ["Sprinkle a few teaspoons of salt over the surface of a small plate or saucer. Rub one wedge of lime along the rim of a tumbler and then dip it into the salt so that the entire rim is covered.", "Fill a cocktail shaker with ice, then add the tequila, lime juice and triple sec. Shake until the outside of the shaker feels cold.", "Strain the mix into the prepared glass over fresh ice. Add a wedge of lime."])
 white_russian = Cocktail("white russian", ["60ml vodka", "2 tbsp Kahlúa", "1 tbsp cream"], ["Mix together all the ingredients.", "Put some ice cubes in a small tumbler and pour the cocktail over the top."])
 
+def add_drink():
+    name = input("Please enter the name of your cocktail.\n> ")
+    ingredient = "gas'n'air"
+    ingredients = []
+    while ingredient != "none":
+        print(f"Your current list of ingredients contains {ingredients}.")
+        ingredient = input("Please type another ingredient in here. If you have finished your list of ingredients, type none.\n> ")
+        ingredients.append(ingredient)
+    instruction = "breathe"
+    instructions = []
+    while instruction != "none":
+        print(f"Your list of instructions is {instructions}.")
+        instruction = input("Please type your next instruction here. If you have no further instructions, type 'none'.\n> ")
+        instructions.append(instruction)
+    name = Cocktail(name, ingredients, instructions)
+
+
+
 def decision():
     user_choice = input("Choose a cocktail that you would like to make:\n1: Margarita\n2: Martini\n3: Mojito\n4: Vesper Martini\n5: White Russian\n\nPlease enter the number of your choice >")
     if user_choice == "1":
-        margarita.make
+        margarita.make()
     elif user_choice == "2":
-        martini.make
+        martini.make()
     elif user_choice == "3":
-        mojito.make
+        mojito.make()
     elif user_choice == "4":
-        vesper_martini.make
+        vesper_martini.make()
     elif user_choice == "5":
-        white_russian.make
+        white_russian.make()
+    else:
+        print("\nI'm sorry, I didn't understand that. Please enter the number of the cocktail that you would like to make.\n")
+        decision()
     again = input("Would you like to make another cocktail? y/n\n> ")
     if again == "y":
         decision()
     else:
         print("Thanks for using my cocktails app!")
+        return
 
-decision()
+add_drink()
+# decision()
+print(cocktail_list)
